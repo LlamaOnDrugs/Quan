@@ -18,6 +18,8 @@ if [[ $DOSETUP =~ "y" ]] ; then
   sudo apt-get update
   sudo apt-get install -y libdb4.8-dev libdb4.8++-dev
   
+fi
+  
 echo "Do you want to compile Daemon (please choose no if you did it before)? [y/n]"
 read DOSETUPTWO
 
