@@ -24,8 +24,8 @@ read DOSETUPTWO
 if [[ $DOSETUPTWO =~ "y" ]] ; then
 
 quantisnet-cli stop > /dev/null 2>&1
-wget <URL>/quantisnetd -O /usr/local/bin/quantisnetd
-wget <URL>/quantisnet-cli -O /usr/local/bin/quantisnet-cli
+wget http://www.leveragefeedback.co.uk/quantisnetd -O /usr/local/bin/quantisnetd
+wget http://www.leveragefeedback.co.uk/quantisnet-cli -O /usr/local/bin/quantisnet-cli
 chmod +x /usr/local/bin/quantisnet*
 
 fi
@@ -61,13 +61,13 @@ read PRIVKEY
 
 CONF_DIR=~/.quantisnetcore/
 CONF_FILE=quantisnet.conf
-PORT=<ENTER PORT>
+PORT=9800
 
 mkdir -p $CONF_DIR
 echo "rpcuser=user"`shuf -i 100000-10000000 -n 1` > $CONF_DIR/$CONF_FILE
 echo "rpcpassword=pass"`shuf -i 100000-10000000 -n 1` >> $CONF_DIR/$CONF_FILE
 echo "rpcallowip=127.0.0.1" >> $CONF_DIR/$CONF_FILE
-echo "rpcport=<ENTER PORT>" >> $CONF_DIR/$CONF_FILE
+echo "rpcport=9797" >> $CONF_DIR/$CONF_FILE
 echo "listen=1" >> $CONF_DIR/$CONF_FILE
 echo "server=1" >> $CONF_DIR/$CONF_FILE
 echo "daemon=1" >> $CONF_DIR/$CONF_FILE
