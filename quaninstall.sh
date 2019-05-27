@@ -38,27 +38,10 @@ read DOSETUPTWO
 
 if [[ $DOSETUPTWO =~ "y" ]] ; then
 
-quantisnet-cli stop > /dev/null 2>&1
-wget http://www.leveragefeedback.co.uk/quantisnetd -O /usr/local/bin/quantisnetd
-wget http://www.leveragefeedback.co.uk/quantisnet-cli -O /usr/local/bin/quantisnet-cli
-chmod +x /usr/local/bin/quantisnet*
-
-fi
-
-echo "Do you want to install sentinel?  (Required for rewards and governance) [y/n]"
-read DOSETUPTHREE
-
-if [[ $DOSETUPTHREE =~ "y" ]] ; then
-
-  sudo apt-get update
-  sudo apt-get -y install python-virtualenv
-  srcdir="$(pwd)"
-  user="$(whoami)"
-  git clone https://github.com/LlamaOnDrugs/sentinel.git && cd sentinel
-  virtualenv ./venv
-  ./venv/bin/pip install -r requirements.txt
-  
-  echo "* * * * * cd ${srcdir} && ./venv/bin/python bin/sentinel.py >/dev/null 2>&1" >> /var/spool/cron/crontabs/${user}
+  quantisnet-cli stop > /dev/null 2>&1
+  wget http://www.leveragefeedback.co.uk/quantisnetd -O /usr/local/bin/quantisnetd
+  wget http://www.leveragefeedback.co.uk/quantisnet-cli -O /usr/local/bin/quantisnet-cli
+  chmod +x /usr/local/bin/quantisnet*
 
 fi
 
@@ -110,6 +93,23 @@ echo "masternodeaddr=$IP:$PORT" >> $CONF_DIR/$CONF_FILE
 echo "masternodeprivkey=$PRIVKEY" >> $CONF_DIR/$CONF_FILE
 
 quantisnetd -daemon
+
+echo "Do you want to install sentinel?  (Required for rewards and governance) [y/n]"
+read DOSETUPTHREE
+
+if [[ $DOSETUPTHREE =~ "y" ]] ; then
+  cd .quantisnetcore
+  sudo apt-get update
+  sudo apt-get -y install python-virtualenv
+  srcdir="$(pwd)"
+  user="$(whoami)"
+  git clone https://github.com/LlamaOnDrugs/sentinel.git && cd sentinel
+  virtualenv ./venv
+  ./venv/bin/pip install -r requirements.txt
+  
+  echo "* * * * * cd ${srcdir} && ./venv/bin/python bin/sentinel.py >/dev/null 2>&1" >> /var/spool/cron/crontabs/${user}
+
+fi
 
 echo ""
 echo "##########################"
