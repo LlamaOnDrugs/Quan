@@ -107,7 +107,7 @@ if [[ $DOSETUPTHREE =~ "y" ]] ; then
   virtualenv ./venv
   ./venv/bin/pip install -r requirements.txt
   srcdir="$(pwd)"
-  echo "quantisnet_conf=$CONF_DIR/$CONF_FILE" >> $CONF_DIR/sentinel/$SENT_CONF
+  echo "quantisnet_conf=$CONF_DIR$CONF_FILE" >> $CONF_DIR/sentinel/$SENT_CONF
   
   echo "* * * * * cd ${srcdir} && ./venv/bin/python bin/sentinel.py >/dev/null 2>&1" >> /var/spool/cron/crontabs/${user}
 
