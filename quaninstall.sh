@@ -76,7 +76,7 @@ read PRIVKEY
 
 CONF_DIR=~/.quantisnetcore/
 CONF_FILE=quantisnet.conf
-SENT_CONT=sentinel.conf
+SENT_CONF=sentinel.conf
 PORT=9800
 
 mkdir -p $CONF_DIR
