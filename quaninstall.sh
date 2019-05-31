@@ -76,6 +76,7 @@ read PRIVKEY
 
 CONF_DIR=~/.quantisnetcore/
 CONF_FILE=quantisnet.conf
+SENT_CONT=sentinel.conf
 PORT=9800
 
 mkdir -p $CONF_DIR
@@ -98,13 +99,11 @@ echo "Do you want to install sentinel?  (Required for rewards and governance) [y
 read DOSETUPTHREE
 
 if [[ $DOSETUPTHREE =~ "y" ]] ; then
-  cd .quantisnetcore
   sudo apt-get update
   sudo apt-get -y install python-virtualenv
   user="$(whoami)"
-  git clone https://github.com/LlamaOnDrugs/sentinel.git && cd sentinel
+  git clone https://github.com/LlamaOnDrugs/sentinel.git $CONF_DIR && cd $CONF_DIR/sentinel
   virtualenv ./venv
-  SENT_CONT=sentinel.conf
   ./venv/bin/pip install -r requirements.txt
   srcdir="$(pwd)"
   echo "quantisnet_conf=$CONF_DIR/$CONF_FILE" >> $CONF_DIR/$SENT_CONF
