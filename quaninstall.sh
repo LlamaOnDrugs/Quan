@@ -77,7 +77,7 @@ read PRIVKEY
 CONF_DIR=~/.quantisnetcore/
 CONF_FILE=quantisnet.conf
 SENT_CONF=sentinel.conf
-PORT=9800
+PORT=9801
 
 mkdir -p $CONF_DIR
 echo "rpcuser=user"`shuf -i 100000-10000000 -n 1` > $CONF_DIR/$CONF_FILE
