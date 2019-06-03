@@ -39,10 +39,23 @@ read DOSETUPTWO
 if [[ $DOSETUPTWO =~ "y" ]] ; then
 
   quantisnet-cli stop > /dev/null 2>&1
+  
+  wget https://github.com/QuantisDev/QuantisNet-Core/releases/download/2.1.2/quantisnetcore-2.1.2-x86_64-linux-gnu.tar.gz
+  tar -xf quantisnetcore-2.1.2-x86_64-linux-gnu.tar.gz
+  mv 
+  
   wget http://www.quantisnetwork.org/wallets/quantisnetd -O /usr/local/bin/quantisnetd
   wget http://www.quantisnetwork.org/wallets/quantisnet-cli -O /usr/local/bin/quantisnet-cli
   chmod +x /usr/local/bin/quantisnet*
 
+  mv ~/quantisnetcore-2.1.2/share/man/man1/dash-tx.1 /usr/local/share/man/man1/dash-tx.1
+  mv ~/quantisnetcore-2.1.2/share/man/man1/dash-qt.1 /usr/local/share/man/man1/dash-qt.1
+  mv ~/quantisnetcore-2.1.2/share/man/man1/dashd.1 /usr/local/share/man/man1/dashd.1
+  mv ~/quantisnetcore-2.1.2/share/man/man1/dash-cli.1 /usr/local/share/man/man1/dash-cli.1
+  mv ~/quantisnetcore-2.1.2/share/lib /usr/local/lib
+  mv ~/quantisnetcore-2.1.2/include/quantisnetconsensus.h /usr/local/include
+  mv ~/quantisnetcore-2.1.2/share/man/man1/dash-qt.1 /usr/local/share/man/man1/dash-qt.1
+  mv ~/quantisnetcore-2.1.2/bin /usr/local/bin
 fi
 
 echo ""
