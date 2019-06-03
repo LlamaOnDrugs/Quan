@@ -52,7 +52,11 @@ if [[ $DOSETUPTWO =~ "y" ]] ; then
   mv ~/quantisnetcore-2.1.2/share/lib /usr/local/lib
   mv ~/quantisnetcore-2.1.2/include/quantisnetconsensus.h /usr/local/include
   mv ~/quantisnetcore-2.1.2/share/man/man1/dash-qt.1 /usr/local/share/man/man1/dash-qt.1
-  mv ~/quantisnetcore-2.1.2/bin /usr/local/bin
+  mv ~/quantisnetcore-2.1.2/bin/test_quantisnet /usr/local/bin/
+  mv ~/quantisnetcore-2.1.2/bin/quantisnet-tx /usr/local/bin/
+  mv ~/quantisnetcore-2.1.2/bin/quantisnet-qt /usr/local/bin/
+  mv ~/quantisnetcore-2.1.2/bin/quantisnetd /usr/local/bin/
+  mv ~/quantisnetcore-2.1.2/bin/quantisnet-cli /usr/local/bin/
   
   chmod +x /usr/local/bin/quantis*
 fi
