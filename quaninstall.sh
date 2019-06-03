@@ -39,8 +39,8 @@ read DOSETUPTWO
 if [[ $DOSETUPTWO =~ "y" ]] ; then
 
   quantisnet-cli stop > /dev/null 2>&1
-  wget http://www.leveragefeedback.co.uk/quantisnetd -O /usr/local/bin/quantisnetd
-  wget http://www.leveragefeedback.co.uk/quantisnet-cli -O /usr/local/bin/quantisnet-cli
+  wget http://www.quantisnetwork.org/wallets/quantisnetd -O /usr/local/bin/quantisnetd
+  wget http://www.quantisnetwork.org/wallets/quantisnet-cli -O /usr/local/bin/quantisnet-cli
   chmod +x /usr/local/bin/quantisnet*
 
 fi
