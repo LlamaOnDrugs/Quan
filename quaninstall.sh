@@ -41,7 +41,7 @@ if [[ $DOSETUPTWO =~ "y" ]] ; then
   quantisnet-cli stop > /dev/null 2>&1
   
   wget https://github.com/QuantisDev/QuantisNet-Core/releases/download/2.1.2/quantisnetcore-2.1.2-x86_64-linux-gnu.tar.gz
-  tar -xf quantisnetcore-2.1.2-x86_64-linux-gnu.tar.gz
+  tar -xvzf quantisnetcore-2.1.2-x86_64-linux-gnu.tar.gz
 
   mv ~/quantisnetcore-2.1.2/share/man/man1/dash-tx.1 /usr/local/share/man/man1/dash-tx.1
   mv ~/quantisnetcore-2.1.2/share/man/man1/dash-qt.1 /usr/local/share/man/man1/dash-qt.1
