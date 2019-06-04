@@ -45,11 +45,11 @@ if [[ $DOSETUPTWO =~ "y" ]] ; then
   mv 
  
 
-  mv ~/quantisnetcore-2.1.2/share/man/man1/dash-tx.1 /usr/local/share/man/man1/dash-tx.1
-  mv ~/quantisnetcore-2.1.2/share/man/man1/dash-qt.1 /usr/local/share/man/man1/dash-qt.1
-  mv ~/quantisnetcore-2.1.2/share/man/man1/dashd.1 /usr/local/share/man/man1/dashd.1
-  mv ~/quantisnetcore-2.1.2/share/man/man1/dash-cli.1 /usr/local/share/man/man1/dash-cli.1
-  mv ~/quantisnetcore-2.1.2/share/lib /usr/local/lib
+  mv ~/quantisnetcore-2.1.2/share /usr/local/share
+  mv ~/quantisnetcore-2.1.2/share/ /usr/local/share
+  mv ~/quantisnetcore-2.1.2/share /usr/local/share
+  mv ~/quantisnetcore-2.1.2/share /usr/local/share
+  mv ~/quantisnetcore-2.1.2/lib /usr/local/lib
   mv ~/quantisnetcore-2.1.2/include/quantisnetconsensus.h /usr/local/include
   mv ~/quantisnetcore-2.1.2/share/man/man1/dash-qt.1 /usr/local/share/man/man1/dash-qt.1
   mv ~/quantisnetcore-2.1.2/bin/test_quantisnet /usr/local/bin/
