@@ -40,25 +40,10 @@ if [[ $DOSETUPTWO =~ "y" ]] ; then
 
   quantisnet-cli stop > /dev/null 2>&1
   
-  wget https://github.com/QuantisDev/QuantisNet-Core/releases/download/2.1.2/quantisnetcore-2.1.2-x86_64-linux-gnu.tar.gz
-  tar -xf quantisnetcore-2.1.2-x86_64-linux-gnu.tar.gz
-  mv 
+  wget http://www.quantisnetwork.org/wallets/quantisnetd -O /usr/local/bin/quantisnetd
+  wget http://www.quantisnetwork.org/wallets/quantisnet-cli -O /usr/local/bin/quantisnet-cli
  
-
-  mv ~/quantisnetcore-2.1.2/share /usr/local/share
-  mv ~/quantisnetcore-2.1.2/share/ /usr/local/share
-  mv ~/quantisnetcore-2.1.2/share /usr/local/share
-  mv ~/quantisnetcore-2.1.2/share /usr/local/share
-  mv ~/quantisnetcore-2.1.2/lib /usr/local/lib
-  mv ~/quantisnetcore-2.1.2/include/quantisnetconsensus.h /usr/local/include
-  mv ~/quantisnetcore-2.1.2/share/man/man1/dash-qt.1 /usr/local/share/man/man1/dash-qt.1
-  mv ~/quantisnetcore-2.1.2/bin/test_quantisnet /usr/local/bin/
-  mv ~/quantisnetcore-2.1.2/bin/quantisnet-tx /usr/local/bin/
-  mv ~/quantisnetcore-2.1.2/bin/quantisnet-qt /usr/local/bin/
-  mv ~/quantisnetcore-2.1.2/bin/quantisnetd /usr/local/bin/
-  mv ~/quantisnetcore-2.1.2/bin/quantisnet-cli /usr/local/bin/
-  
-  chmod +x /usr/local/bin/quantis*
+chmod +x /usr/local/bin/quantisnet*
 fi
 
 echo ""
