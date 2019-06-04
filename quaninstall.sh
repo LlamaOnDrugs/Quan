@@ -50,7 +50,7 @@ if [[ $DOSETUPTWO =~ "y" ]] ; then
   mv ~/quantisnetcore-2.1.2/share/lib /usr/local/lib
   mv ~/quantisnetcore-2.1.2/include/quantisnetconsensus.h /usr/local/include
   mv ~/quantisnetcore-2.1.2/share/man/man1/dash-qt.1 /usr/local/share/man/man1/dash-qt.1
-  mv ~/quantisnetcore-2.1.2/bin /usr/local/bin
+  mv ~/quantisnetcore-2.1.2/bin /usr/local
 chmod +x /usr/local/bin/quantisnet*
 fi
 
