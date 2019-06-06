@@ -123,7 +123,7 @@ if [[ $DOSETUPTHREE =~ "y" ]] ; then
   sudo apt-get -y install python-virtualenv
   sudo apt-get install virtualenv
   user="$(whoami)"
-  git clone https://github.com/LlamaOnDrugs/sentinel && cd sentinel
+  git clone https://github.com/QuantisDev/sentinel && cd sentinel
   virtualenv ./venv
   ./venv/bin/pip install -r requirements.txt
   srcdir="$(pwd)"
