@@ -124,15 +124,15 @@ if [[ $DOSETUPTHREE =~ "y" ]] ; then
   sudo apt-get install virtualenv
   user="$(whoami)"
   git clone https://github.com/QuantisDev/sentinel && cd sentinel
-  virtualenv ./venv
-  ./venv/bin/pip install -r requirements.txt
+  sudo virtualenv ./venv
+  sudo ./venv/bin/pip install -r requirements.txt
   srcdir="$(pwd)"
   $(conf_set_value $CONF_DIR/sentinel/sentinel.conf "quantisnet_config"           "${CONF_DIR}quantisnet.conf" 1)
   
   #write out current crontab
   crontab -l > mycron
   #echo new cron into cron file
-  echo "* * * * * cd ${srcdir} && ./venv/bin/python bin/sentinel.py >/dev/null 2>&1" >> mycron
+  echo "* * * * * cd ${srcdir} && sudo ./venv/bin/python bin/sentinel.py >/dev/null 2>&1" >> mycron
   #install new cron file
   crontab mycron
   rm mycron
