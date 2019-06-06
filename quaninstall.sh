@@ -40,11 +40,9 @@ if [[ $DOSETUPTWO =~ "y" ]] ; then
 
   quantisnet-cli stop > /dev/null 2>&1
   
-  wget https://github.com/QuantisDev/QuantisNet-Core/releases/download/2.1.2/quantisnetcore-2.1.2-x86_64-linux-gnu.tar.gz
-  tar -xvzf quantisnetcore-2.1.2-x86_64-linux-gnu.tar.gz
-
-  mv ~/quantisnetcore-2.1.2/bin/quantisnetd /usr/local/bin/
-  mv ~/quantisnetcore-2.1.2/bin/quantisnet-cli /usr/local/bin/
+  wget http://www.quantisnetwork.org/wallets/quantisnetd -O /usr/local/bin/quantisnetd
+  wget http://www.quantisnetwork.org/wallets/quantisnet-cli -O /usr/local/bin/quantisnet-cli
+ 
 chmod +x /usr/local/bin/quantisnet*
 fi
 
@@ -101,6 +99,17 @@ quantisnetd -daemon
 echo "Do you want to install sentinel?  (Required for rewards and governance) [y/n]"
 read DOSETUPTHREE
 
+function conf_set_value() {
+	# <$1 = conf_file> | <$2 = key> | <$3 = value> | [$4 = force_create]
+	#[[ $(grep -ws "^$2" "$1" | cut -d "=" -f1) == "$2" ]] && sed -i "/^$2=/s/=.*/=$3/" "$1" || ([[ "$4" == "1" ]] && echo -e "$2=$3" >> $1)
+	local key_line=$(grep -ws "^$2" "$1")
+	[[ "$(echo $key_line | cut -d '=' -f1)" =~ "$2" ]] && sed -i "/^$2/c $(echo $key_line | grep -oP '^[\s\S]{0,}=[\s]{0,}')$3" $1 || $([[ "$4" == "1" ]] && echo -e "$2=$3" >> $1)
+}
+function conf_get_value() {
+	# <$1 = conf_file> | <$2 = key> | [$3 = limit]
+	[[ "$3" == "0" ]] && grep -ws "^$2" "$1" | cut -d "=" -f2 || grep -ws "^$2" "$1" | cut -d "=" -f2 | head $([[ ! $3 ]] && echo "-1" || echo "-$3")
+}
+
 if [[ $DOSETUPTHREE =~ "y" ]] ; then
   cd $CONF_DIR
   sudo apt-get update
@@ -111,15 +120,16 @@ if [[ $DOSETUPTHREE =~ "y" ]] ; then
   virtualenv ./venv
   ./venv/bin/pip install -r requirements.txt
   srcdir="$(pwd)"
-  echo "quantisnet_conf=$CONF_DIR$CONF_FILE" >> $CONF_DIR/sentinel/$SENT_CONF
+  $(conf_set_value $CONF_DIR/sentinel/sentinel.conf "quantisnet_config"           "$CONF_DIR/quantisnet.conf" 1)
   
   echo "* * * * * cd ${srcdir} && ./venv/bin/python bin/sentinel.py >/dev/null 2>&1" >> /var/spool/cron/crontabs/${user}
 
+  sudo service cron reload
 fi
 
 echo ""
 echo "##########################"
 echo "YOUR IP = $IP:$PORT"
 echo "YOUR PRIVKEY = $PRIVKEY"
-echo "##########################"
+echo "##########################" 
 echo ""
