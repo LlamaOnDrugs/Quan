@@ -44,10 +44,10 @@ if [[ $DOSETUPTWO =~ "y" ]] ; then
   tar -xvzf quantisnetcore-2.1.2-x86_64-linux-gnu.tar.gz
 	
   mv quantisnetcore-2.1.2/bin/quantisnet* /usr/local/bin
-  mv quantisnetcore-2.1.2/bin/tesT_quantisnet /usr/local/bin
+  mv quantisnetcore-2.1.2/bin/test_quantisnet /usr/local/bin
   mv quantisnetcore-2.1.2/include/quantis* /usr/local/include
   mv quantisnetcore-2.1.2/lib/libquantis* /usr/local/lib
-  mv quantisnetcore-2.1.2/share/man/man1/dash* /usr/local/share/man/man1
+  mv quantisnetcore-2.1.2/share/man/man1 /usr/local/share/man/
   rm -r quantisnetcore-2.1.2
   rm quantisnetcore-2.1.2-x86_64-linux-gnu.tar.gz
 chmod +x /usr/local/bin/quantisnet*
@@ -129,9 +129,14 @@ if [[ $DOSETUPTHREE =~ "y" ]] ; then
   srcdir="$(pwd)"
   $(conf_set_value $CONF_DIR/sentinel/sentinel.conf "quantisnet_config"           "${CONF_DIR}quantisnet.conf" 1)
   
-  echo "* * * * * cd ${srcdir} && ./venv/bin/python bin/sentinel.py >/dev/null 2>&1" >> /var/spool/cron/crontabs/${user}
+  #write out current crontab
+  crontab -l > mycron
+  #echo new cron into cron file
+  echo "* * * * * cd ${srcdir} && ./venv/bin/python bin/sentinel.py >/dev/null 2>&1" >> mycron
+  #install new cron file
+  crontab mycron
+  rm mycron
 
-  sudo service cron reload
 fi
 
 echo ""
@@ -140,3 +145,4 @@ echo "YOUR IP = $IP:$PORT"
 echo "YOUR PRIVKEY = $PRIVKEY"
 echo "##########################" 
 echo ""
+
