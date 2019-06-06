@@ -127,7 +127,7 @@ if [[ $DOSETUPTHREE =~ "y" ]] ; then
   virtualenv ./venv
   ./venv/bin/pip install -r requirements.txt
   srcdir="$(pwd)"
-  $(conf_set_value $CONF_DIR/sentinel/sentinel.conf "quantisnet_config"           "${CONF_DIR}quantisnet.conf" 1)
+  $(conf_set_value $CONF_DIR/sentinel/sentinel.conf "quantisnet_conf"           "${CONF_DIR}quantisnet.conf" 1)
   
   #write out current crontab
   crontab -l > mycron
