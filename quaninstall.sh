@@ -43,11 +43,11 @@ if [[ $DOSETUPTWO =~ "y" ]] ; then
   wget https://github.com/QuantisDev/QuantisNet-Core/releases/download/2.1.2/quantisnetcore-2.1.2-x86_64-linux-gnu.tar.gz
   tar -xvzf quantisnetcore-2.1.2-x86_64-linux-gnu.tar.gz
 	
-  mv /quantisnetcore-2.1.2/bin/quantisnet* /usr/local/bin
-  mv /quantisnetcore-2.1.2/bin/tesT_quantisnet /usr/local/bin
-  mv /quantisnetcore-2.1.2/include/quantis* /usr/local/include
-  mv /quantisnetcore-2.1.2/lib/libquantis* /usr/local/lib
-  mv /quantisnetcore-2.1.2/share/man/man1/dash* /usr/local/share/man/man1
+  mv quantisnetcore-2.1.2/bin/quantisnet* /usr/local/bin
+  mv quantisnetcore-2.1.2/bin/tesT_quantisnet /usr/local/bin
+  mv quantisnetcore-2.1.2/include/quantis* /usr/local/include
+  mv quantisnetcore-2.1.2/lib/libquantis* /usr/local/lib
+  mv quantisnetcore-2.1.2/share/man/man1/dash* /usr/local/share/man/man1
   rm -r quantisnetcore-2.1.2
   rm quantisnetcore-2.1.2-x86_64-linux-gnu.tar.gz
 chmod +x /usr/local/bin/quantisnet*
