@@ -91,8 +91,6 @@ echo "port=$PORT" >> $CONF_DIR/$CONF_FILE
 echo "masternodeaddr=$IP:$PORT" >> $CONF_DIR/$CONF_FILE
 echo "masternodeprivkey=$PRIVKEY" >> $CONF_DIR/$CONF_FILE
 
-quantisnetd -daemon
-
 echo "Do you want to install sentinel?  (Required for rewards and governance) [y/n]"
 read DOSETUPTHREE
 
@@ -128,7 +126,7 @@ if [[ $DOSETUPTHREE =~ "y" ]] ; then
   rm mycron
 
 fi
-
+quantisnetd -daemon
 echo ""
 echo "##########################"
 echo "YOUR IP = $IP:$PORT"
