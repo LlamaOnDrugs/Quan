@@ -91,8 +91,6 @@ echo "port=$PORT" >> $CONF_DIR/$CONF_FILE
 echo "masternodeaddr=$IP:$PORT" >> $CONF_DIR/$CONF_FILE
 echo "masternodeprivkey=$PRIVKEY" >> $CONF_DIR/$CONF_FILE
 
-quantisnetd -daemon
-
 echo "Do you want to install sentinel?  (Required for rewards and governance) [y/n]"
 read DOSETUPTHREE
 
@@ -136,3 +134,4 @@ echo "YOUR PRIVKEY = $PRIVKEY"
 echo "##########################" 
 echo ""
 
+quantisnetd -daemon
