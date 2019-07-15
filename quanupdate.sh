@@ -24,6 +24,7 @@ mv quantisnetcore-2.1.3/lib/libquantis* /usr/local/lib
 mv quantisnetcore-2.1.3/share/man/man1 /usr/local/share/man
 rm -r quantisnetcore-2.1.3
 rm quantisnetcore-2.1.3-x86_64-linux-gnu.tar.gz
+chmod +x /usr/local/bin/quantisnet*
 
 echo "Do you need to resync the chain? [y/n]"
 read DOSETUP
