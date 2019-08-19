@@ -112,7 +112,7 @@ if [[ $DOSETUPTHREE =~ "y" ]] ; then
   cd $CONF_DIR
   sudo apt-get update
   sudo apt-get -y install python-virtualenv
-  sudo apt-get install virtualenv
+  sudo apt-get -y install virtualenv
   user="$(whoami)"
   git clone https://github.com/QuantisDev/sentinel && cd sentinel
   sudo virtualenv ./venv
