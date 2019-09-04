@@ -12,7 +12,7 @@ rm /usr/local/share/man/man1/dash*
 rm /usr/local/lib/libquantis*
 rm /usr/local/include/quantisnet*
 
-wget hhttps://github.com/QuantisDev/QuantisNet-Core/releases/download/v2.1.3.2/quantisnetcore-2.1.3.2-x86_64-linux-gnu.tar.gz
+wget https://github.com/QuantisDev/QuantisNet-Core/releases/download/v2.1.3.2/quantisnetcore-2.1.3.2-x86_64-linux-gnu.tar.gz
 tar -xvzf quantisnetcore-2.1.3.2-x86_64-linux-gnu.tar.gz
 
 mv quantisnetcore-2.1.3/bin/quantisnet* /usr/local/bin
