@@ -31,10 +31,8 @@ if [[ $DOSETUPTWO =~ "y" ]] ; then
 
   quantisnet-cli stop > /dev/null 2>&1
   
-  wget https://github.com/QuantisDev/QuantisNet-Core/releases/download/2.1.3.1/QuantisNetcore-2.1.3.1.-.Linux-Wallets.zip
-  unzip QuantisNetcore-2.1.3.1.-.Linux-Wallets.zip
-  rm quantisnetcore-2.1.3-i686-pc-linux-gnu.tar.gz quantisnetcore-2.1.3-arm-linux-gnueabihf.tar.gz
-  tar -xvzf quantisnetcore-2.1.3-x86_64-linux-gnu.tar.gz
+  wget https://github.com/QuantisDev/QuantisNet-Core/releases/download/v2.1.3.2/quantisnetcore-2.1.3.2-x86_64-linux-gnu.tar.gz
+  tar -xvzf quantisnetcore-2.1.3.2-x86_64-linux-gnu.tar.gz
 	
   mv quantisnetcore-2.1.3/bin/quantisnet* /usr/local/bin
   mv quantisnetcore-2.1.3/bin/test_quantisnet /usr/local/bin
@@ -42,7 +40,7 @@ if [[ $DOSETUPTWO =~ "y" ]] ; then
   mv quantisnetcore-2.1.3/lib/libquantis* /usr/local/lib
   mv quantisnetcore-2.1.3/share/man/man1 /usr/local/share/man/
   rm -r quantisnetcore-2.1.3
-  rm quantisnetcore-2.1.3-x86_64-linux-gnu.tar.gz
+  rm quantisnetcore-2.1.3.2-x86_64-linux-gnu.tar.gz
 chmod +x /usr/local/bin/quantisnet*
 fi
 
@@ -136,5 +134,6 @@ echo "YOUR IP = $IP:$PORT"
 echo "YOUR PRIVKEY = $PRIVKEY"
 echo "##########################" 
 echo ""
-
+killall -9 quantisnetd
+sleep 20
 quantisnetd -daemon
